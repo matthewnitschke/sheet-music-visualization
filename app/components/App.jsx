@@ -10,7 +10,8 @@ export default class App extends Component {
 
         this.state = {
             selectedSongName: "",
-            songs: {"This is a song name":{"Intro":["E F# E C"],"Verse":["Em F# C#m"],"Chorus":["E E F F","E F C# E"]},"This is another song name":{"Intro":["E E E E"],"Verse":["E F C D"],"Bridge":["A B C D E F#"]}}
+            // songs: {"This is a song name":{"Intro":["E F# E C"],"Verse":["Em F# C#m"],"Chorus":["E E F F","E F C# E"]},"This is another song name":{"Intro":["E E E E"],"Verse":["E F C D"],"Bridge":["A B C D E F#"]}}
+            songs: null
         }
     }
 

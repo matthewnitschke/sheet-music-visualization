@@ -27020,18 +27020,8 @@ function (_Component) {
 
     _this.state = {
       selectedSongName: "",
-      songs: {
-        "This is a song name": {
-          "Intro": ["E F# E C"],
-          "Verse": ["Em F# C#m"],
-          "Chorus": ["E E F F", "E F C# E"]
-        },
-        "This is another song name": {
-          "Intro": ["E E E E"],
-          "Verse": ["E F C D"],
-          "Bridge": ["A B C D E F#"]
-        }
-      }
+      // songs: {"This is a song name":{"Intro":["E F# E C"],"Verse":["Em F# C#m"],"Chorus":["E E F F","E F C# E"]},"This is another song name":{"Intro":["E E E E"],"Verse":["E F C D"],"Bridge":["A B C D E F#"]}}
+      songs: null
     };
     return _this;
   }
@@ -27107,7 +27097,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61977" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63683" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
@@ -27250,4 +27240,4 @@ function hmrAccept(bundle, id) {
   });
 }
 },{}]},{},["../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","entry.js"], null)
-//# sourceMappingURL=entry.87c11fe2.map
+//# sourceMappingURL=/sheet-music-visualization/entry.87c11fe2.map
