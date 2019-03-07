@@ -1,0 +1,51 @@
+body {
+    background-color: #282c33;
+    font-family: 'Muli', sans-serif;
+    color:#FFF;
+    height: 100%;
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+.h100, #root, html {
+    height: 100%;
+}
+
+.dfc {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar {
+    /* margin-right: 1rem; */
+    border-right: solid 3px #FFF;
+    height: 100%;
+}
+
+.song-name-select {
+    margin: .4rem 1rem;
+    cursor: pointer;
+}
+
+.song-name-select.selected {
+    text-decoration: underline;
+}
+
+.section {
+    display: inline-block;
+    background-color: #515760;
+    margin: 1rem;
+    margin-bottom: 0; 
+    padding: .3rem .5rem;
+}
+
+.section-name {
+    font-size: 2rem;
+}
+
+.section-body {
+    font-size: 3.5rem;
+}

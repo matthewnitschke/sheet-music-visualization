@@ -1,0 +1,25 @@
+{
+  "name": "sheet-music-visualization",
+  "version": "1.0.0",
+  "main": "main.js",
+  "repository": "git@github.com:matthewnitschke/sheet-music-visualization.git",
+  "author": "Matthew Nitschke <matthewcnitschke@gmail.comi>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel app/index.html"
+  },
+  "dependencies": {
+    "gravitons-sass": "^1.2.0",
+    "mousetrap": "^1.6.3",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "node-sass": "^4.11.0"
+  }
+}
