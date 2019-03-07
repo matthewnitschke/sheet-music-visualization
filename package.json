@@ -6,7 +6,7 @@
   "author": "Matthew Nitschke <matthewcnitschke@gmail.comi>",
   "license": "MIT",
   "scripts": {
-    "dev": "parcel app/index.html"
+    "dev": "parcel app/index.html --out-dir ./"
   },
   "dependencies": {
     "gravitons-sass": "^1.2.0",
