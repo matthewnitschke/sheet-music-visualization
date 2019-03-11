@@ -6,7 +6,8 @@
   "author": "Matthew Nitschke <matthewcnitschke@gmail.comi>",
   "license": "MIT",
   "scripts": {
-    "watch": "parcel app/index.html --out-dir ./ --public-url /sheet-music-visualization"
+    "watch": "parcel app/index.html --out-dir ./ --public-url /sheet-music-visualization",
+    "build": "parcel build app/index.html --out-dir ./ --public-url /sheet-music-visualization"
   },
   "dependencies": {
     "gravitons-sass": "^1.2.0",
@@ -20,6 +21,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "cssnano": "^4.1.10",
     "node-sass": "^4.11.0"
   }
 }
