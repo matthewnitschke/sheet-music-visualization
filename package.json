@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "watch": "parcel app/index.html --out-dir ./ --public-url /sheet-music-visualization",
-    "build": "parcel build app/index.html --out-dir ./ --public-url /sheet-music-visualization"
+    "build": "make clean && parcel build app/index.html --out-dir ./ --public-url /sheet-music-visualization"
   },
   "dependencies": {
     "gravitons-sass": "^1.2.0",

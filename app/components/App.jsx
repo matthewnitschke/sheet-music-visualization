@@ -9,36 +9,83 @@ export default class App extends Component {
         super(props)
 
         this.state = {
-            selectedSongName: "",
-            // songs: {"This is a song name":{"Intro":["E F# E C"],"Verse":["Em F# C#m"],"Chorus":["E E F F","E F C# E"]},"This is another song name":{"Intro":["E E E E"],"Verse":["E F C D"],"Bridge":["A B C D E F#"]}}
+            selectedSongIndex: 0,
+            // songs: [{
+            //     name: "This is a song name",
+            //     comments: [],
+            //     sections: [{
+            //         name: "Verse",
+            //         comments: [],
+            //         lines: ["E E E E"],
+            //     }]
+            // }]
             songs: null
         }
     }
 
     parseFile = (src) => {
+        debugger
         src = src.trim()
         let songs = src.split(/\[.*\]/).filter(song => !!song.trim())
         let songNames = src.match(/\[(.*)\]/gm).map(name => name.replace(/[\[\]]/gm, ""))
 
         let data = songs.reduce((accumulator, song, i) => {
             let songName = songNames[i]
-            accumulator[songName] = this.parseSong(song)
+            accumulator.push(this.parseSong(song, songName))
             return accumulator
-        }, {})
+        }, [])
 
         this.setState({
             songs: data
         })
     }
 
-    parseSong = (song) => {
-        let sections = song.trim().split(/\n[\s]*\n/gm).filter(section => !!section.trim());
+    parseComment = (comment) => {
+        return comment.trim().replace(/^\/\/(\s)*/, "")
+    }
 
-        return sections.reduce((accumulator, section) => {
-            let sectionLines = section.split("\n")
-            accumulator[sectionLines[0]] = sectionLines.slice(1)
-            return accumulator
-        }, {})
+    parseSong = (song, songName) => {
+        song = song.trim()
+
+        let songCommentsRegex = /(\/\/(.*)\n)+[\s]*\n/gm
+        let songComments = song.match(songCommentsRegex)
+        if (songComments) {
+            songComments = songComments.map(this.parseComment)
+            song = song.replace(songCommentsRegex, "")
+        } else {
+            songComments = []
+        }
+
+        let sections = song.split(/\n[\s]*\n/gm)
+            .filter(section => !!section.trim())
+            .reduce((accumulator, section) => {
+                let sectionLines = section.split("\n")
+                let sectionName = sectionLines[0]
+                sectionLines = sectionLines.slice(1)
+
+
+                let sectionComments = sectionLines
+                    .filter(sectionLine => sectionLine.substring(0, 2) == "//")
+                    .map(this.parseComment)
+                
+                sectionLines = sectionLines
+                    .filter(sectionLine => sectionLine.substring(0, 2) != "//")
+                    .map(line => line.trim())
+
+                
+                accumulator.push({
+                    name: sectionName,
+                    comments: sectionComments,
+                    lines: sectionLines
+                })
+                return accumulator
+            }, [])
+        
+        return {
+            name: songName,
+            comments: songComments,
+            sections: sections
+        }
     } 
 
     readFile = (e) => {
@@ -60,16 +107,16 @@ export default class App extends Component {
         } else {
             return <div className="h100 df">
                 <SongSelector
-                    songNames={Object.keys(this.state.songs)} 
-                    selectedSongName={this.state.selectedSongName}
-                    onSongNameChange={(newSongName) => {
+                    songs={this.state.songs} 
+                    selectedSongIndex={this.state.selectedSongIndex}
+                    onSongIndexChange={(newSongIndex) => {
                         this.setState({
-                            selectedSongName: newSongName
+                            selectedSongIndex: newSongIndex
                         })
                     }}/>
                 {
-                    !!this.state.selectedSongName &&
-                    <SongDisplayer song={this.state.songs[this.state.selectedSongName]}/>
+                    this.state.selectedSongIndex != null  &&
+                    <SongDisplayer song={this.state.songs[this.state.selectedSongIndex]}/>
                 }
             </div>
         }

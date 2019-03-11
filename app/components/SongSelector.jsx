@@ -5,34 +5,32 @@ import Mousetrap from 'mousetrap';
 export default class SongSelector extends Component {
 
     componentDidMount() {
-        Mousetrap.bind('down', () => {
-            if (this.props.selectedSongName != null){
-                let currentIndex = this.props.songNames.indexOf(this.props.selectedSongName)
-                let nextIndex = (currentIndex + 1) % this.props.songNames.length
-                this.props.onSongNameChange(this.props.songNames[nextIndex])
+        Mousetrap.bind(['down', 'space'], () => {
+            if (this.props.selectedSongIndex != null){
+                let nextIndex = (this.props.selectedSongIndex + 1) % this.props.songs.length
+                this.props.onSongIndexChange(nextIndex)
             }
         })
 
         Mousetrap.bind('up', () => {
-            if (this.props.selectedSongName != null){
-                let currentIndex = this.props.songNames.indexOf(this.props.selectedSongName)
-                let nextIndex = (currentIndex - 1) % this.props.songNames.length
+            if (this.props.selectedSongIndex != null){
+                let nextIndex = (this.props.selectedSongIndex - 1) % this.props.songs.length
                 if (nextIndex < 0) {
-                    nextIndex = this.props.songNames.length -1
+                    nextIndex = this.props.songs.length - 1
                 }
-                this.props.onSongNameChange(this.props.songNames[nextIndex])
+                this.props.onSongIndexChange(nextIndex)
             }
         })
     }
 
     render() {
-        let songNamesDom = this.props.songNames.map((songName, i) => {
+        let songNamesDom = this.props.songs.map((song, i) => {
             return <div 
                 key={i}
-                className={`song-name-select ${this.props.selectedSongName == songName ? 'selected' : ''}`}
-                onClick={() => {this.props.onSongNameChange(songName)}}
+                className={`song-name-select ${this.props.selectedSongIndex == i ? 'selected' : ''}`}
+                onClick={() => {this.props.onSongIndexChange(i)}}
             >
-                {songName}
+                {song.name}
             </div>
         })
         return (
