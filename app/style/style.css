@@ -6,6 +6,24 @@ body {
     margin: 0;
 }
 
+#songFileSelector {
+    display: none;
+}
+
+#songFileSelector + label {
+    background-color: #FFF;
+    color: #282c33;
+    padding: .5rem 1rem;
+    font-size: 3rem;
+    cursor: pointer;
+    margin-top: -2rem;
+}
+
+#songFileSelector + label:hover {
+    background-color: #949494;
+}
+
+
 h1 {
     margin: 0;
 }

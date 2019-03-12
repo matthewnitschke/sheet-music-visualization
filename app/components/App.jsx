@@ -103,7 +103,10 @@ export default class App extends Component {
 
     render() {
         if (this.state.songs == null) {
-            return <input type="file" onChange={this.readFile} />
+            return <div className="df jcc aic h100">
+                <input id="songFileSelector" className="song-file-selector" type="file" onChange={this.readFile} />
+                <label htmlFor="songFileSelector">Select a Song</label>
+            </div>
         } else {
             return <div className="h100 df">
                 <SongSelector
