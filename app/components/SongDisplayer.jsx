@@ -30,10 +30,12 @@ export default class SongDisplayer extends Component {
         })
 
         return (
-            <div className="dfc">
+            <div className="h100 dfc">
                 <div className="song-name">{songName}</div>
                 <div className="song-comments">{songCommentsDom}</div>
-                {songSectionsDom}
+                <div className="dfc h100" style={{ flexWrap: 'wrap' }}>
+                    {songSectionsDom}
+                </div>
             </div>
         );
     }
