@@ -23,7 +23,14 @@ body {
     background-color: #949494;
 }
 
-
+.song-selector-header {
+    background-color: #FFF;
+    color: #282c33;
+    padding: .25rem .3rem;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: .5rem;
+}
 h1 {
     margin: 0;
 }
@@ -44,6 +51,7 @@ h1 {
 
 .song-name-select {
     margin: .4rem 1rem;
+    margin-top: 0;
     cursor: pointer;
 }
 
